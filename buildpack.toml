@@ -1,12 +1,12 @@
 # Buildpack API version
-api = "0.2"
+api = "0.7"
 
 # Buildpack ID and metadata
 [buildpack]
-id = "samples/hello-world"
+id = "mboldt/utility-buildpack"
 version = "0.0.1"
-name = "Hello World Buildpack"
-homepage = "https://github.com/buildpacks/samples/tree/main/buildpacks/hello-world"
+name = "Utility Buildpack"
+homepage = "https://github.com/mboldt/utility-buildpack-plumbing"
 
 # Stacks that the buildpack will work with
 [[stacks]]
