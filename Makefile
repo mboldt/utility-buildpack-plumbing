@@ -1,6 +1,6 @@
 .PHONY: test
-test: build
-	pack build --verbose --path testdata/app --builder cnbs/sample-builder:alpine --buildpack ./out sample-utility-buidpack-app
+test: package
+	pack build --verbose --path testdata/app --builder cnbs/sample-builder:alpine --buildpack utility-buildpack sample-utility-buidpack-app
 
 .PHONY: build
 build: out out/buildpack.toml out/bin/main out/bin/build out/bin/detect
@@ -19,6 +19,10 @@ out/bin/build: out/bin/main
 
 out/bin/detect: out/bin/main
 	ln -sf main out/bin/detect
+
+.PHONY: package
+package: build
+	pack buildpack package utility-buildpack --config ./package.toml
 
 .PHONY: clean
 clean:
