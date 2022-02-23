@@ -1,5 +1,12 @@
 .PHONY: test
-test: package
+test: unit integration
+
+.PHONY: unit
+unit:
+	go test -v ./...
+
+.PHONY: integration
+integration: package
 	pack build --verbose --path testdata/app --builder cnbs/sample-builder:alpine --buildpack utility-buildpack sample-utility-buidpack-app
 
 .PHONY: build

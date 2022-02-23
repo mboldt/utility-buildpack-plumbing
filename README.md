@@ -38,3 +38,7 @@ There are several Go libraries for developing buildpacks,
 ## `libcnb` for Library
 
 To remain unopinionated towards third-party libraries, we will use `libcnb`
+
+## `sclevine/spec` for Test Framework
+
+Another de facto standard across CNB projects (lifecycle, pack, libcnb).
