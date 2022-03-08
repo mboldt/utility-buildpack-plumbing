@@ -48,3 +48,4 @@ Another de facto standard across CNB projects (lifecycle, pack, libcnb).
 - Integration testing.
 - Windows build / package / test.
 - Choose stacks.
+- Release strategy.
