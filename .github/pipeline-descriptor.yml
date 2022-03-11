@@ -1,0 +1,17 @@
+github:
+  username: ${{ secrets.UB_GITHUB_USERNAME }}
+  token:    ${{ secrets.UB_GITHUB_TOKEN }}
+
+# codeowners:
+# - path:  "*"
+#   owner: "@buildpacks/implementation-maintainers"
+
+test:
+  steps:
+  - name: Run Tests
+    run: |
+      #!/usr/bin/env bash
+
+      set -euo pipefail
+
+      make unit

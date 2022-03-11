@@ -4,7 +4,7 @@ A place to try out ideas for utility buildpacks build, package, test, release, l
 
 ## Choices for Tooling
 
-## `make` for Entry Point
+### `make` for Entry Point
 
 `make` is the de facto standard across CNB projects
 (
@@ -15,18 +15,13 @@ A place to try out ideas for utility buildpacks build, package, test, release, l
  [samples](https://github.com/buildpacks/samples/blob/main/Makefile),
  etc.).
 
-## GitHub Actions for CI/CD
+### [`pipeline-builder`](https://github.com/paketo-buildpacks/pipeline-builder) for CI/CD
 
-Again, GitHub Actions is the de facto standard across CNB projects
-([lifecycle](https://github.com/buildpacks/lifecycle/tree/main/.github/workflows),
- [pack](https://github.com/buildpacks/pack/tree/main/.github/workflows),
- [libcnb](https://github.com/buildpacks/libcnb/tree/main/.github/workflows),
- [docs](https://github.com/buildpacks/docs/tree/main/.github/workflows),
- [samples](https://github.com/buildpacks/samples/tree/main/.github/workflows),
- etc.).
+`pipeline-builder` turns a small yaml file into all the common workflows for a buildpack.
+It handles things like testing, preparing and drafting releases, publishing images, updating dependencies, etc.
+`libcnb` uses `pipeline-builder` (see its [pipeline descriptor](https://github.com/buildpacks/libcnb/blob/main/.github/pipeline-descriptor.yml)).
 
-
-## Go for Language
+### Go for Language
 
 Again, Go is the de facto standard across CNB projects (lifecycle, pack, libcnb).
 There are several Go libraries for developing buildpacks,
@@ -35,17 +30,21 @@ There are several Go libraries for developing buildpacks,
  [gcpbuildpack](https://github.com/GoogleCloudPlatform/buildpacks/tree/main/pkg/gcpbuildpack),
  [libbuildpack](https://github.com/cloudfoundry/libbuildpack)).
 
-## `libcnb` for Library
+### `libcnb` for Library
 
 To remain neutral towards third-party libraries, we will use `libcnb`.
 
-## `sclevine/spec` for Test Framework
+### `sclevine/spec` for Test Framework
 
 Another de facto standard across CNB projects (lifecycle, pack, libcnb).
 
 ## To Do / Open Questions
 
 - Integration testing.
-- Windows build / package / test.
-- Choose stacks.
-- Release strategy.
+- Linting
+- Use as a testbed for libcnbv2? Might have to deal with API changes.
+  - Depends on which gets released first
+  - Start with v1, use this as a migration guide?
+- Monorepo utility buildpacks?
+  - E.g., to use one binary to reduce the size of the buildpacks
+  - Maybe not at first, since there will only be one buildpack; planting the seed for the future
